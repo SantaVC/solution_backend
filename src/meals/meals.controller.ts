@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
-import { CreateMealDto } from '../dto/post-control.dto';
 import { MealsService } from './meals.service';
-import { Meal } from './meal.entity';
+import { CreateMealDto } from './dto/create-meal.dto';
 
 @Controller('meals')
 export class MealsController {

@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Answer } from './answer.entity';
 import { Meal } from '../meals/meal.entity';
 import { Sequelize } from 'sequelize-typescript';
-import { CreateAnswersDto } from '../dto/post-control.dto';
+import { CreateAnswersDto } from './dto/create-answer.dto';
 
 @Injectable()
 export class AnswersService {
