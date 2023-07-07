@@ -18,11 +18,8 @@ export class AnswersService {
     }
 
     async findAll(userId: string, includeMeals: boolean) {
-        if (includeMeals) {
-            return this.answerModel.findAll({ where: { user_id: userId }, include: [Meal] });
-        } else {
-            return this.answerModel.findAll({ where: { user_id: userId } });
-        }
+        const include = includeMeals ? [Meal] : [];
+        return this.answerModel.findAll({where: { user_id: userId}, include});
     }
 
     async getSummary(userId: string) {
@@ -36,8 +33,8 @@ export class AnswersService {
           WHERE answer.user_id = ${userId}
         )
         SELECT
-          100 * salty_count / (salty_count + sweet_count) AS saltyMeals,
-          100 * sweet_count / (salty_count + sweet_count) AS sweetMeals
+            COALESCE(100 * salty_count / NULLIF((salty_count + sweet_count), 0), 0) AS saltyMeals,
+            COALESCE(100 * sweet_count / NULLIF((salty_count + sweet_count), 0), 0) AS sweetMeals
         FROM summary;
 
     `);

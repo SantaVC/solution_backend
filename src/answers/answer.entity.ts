@@ -1,4 +1,4 @@
-import { Column, Model, Table, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Column, Model, Table, ForeignKey, BelongsTo, AllowNull } from 'sequelize-typescript';
 import { User } from '../users/user.entity';
 import { Meal } from '../meals/meal.entity';
 
@@ -13,6 +13,7 @@ export class Answer extends Model {
     @Column
     meal_id: number;
 
+    @AllowNull(false)
     @Column
     likes: boolean;
 
