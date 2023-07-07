@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateMealDto } from '../dto/post-control.dto';
 import { Meal } from './meal.entity';
+import { CreateMealDto } from './dto/create-meal.dto';
 
 @Injectable()
 export class MealsService {

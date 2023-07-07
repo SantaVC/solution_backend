@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Param, Body, Query } from '@nestjs/common';
 import { AnswersService } from './answers.service';
-import { CreateAnswersDto } from '../dto/post-control.dto';
-import { Answer } from './answer.entity';
+import { CreateAnswersDto } from './dto/create-answer.dto';
 
 @Controller('answers')
 export class AnswersController {
@@ -13,7 +12,11 @@ export class AnswersController {
     }
 
     @Get(':user_id')
-    find(@Param('user_id') userId: string, @Query('include_meals') includeMeals: boolean) {
+  find(
+    @Param('user_id') userId: string,
+    @Query('include_meals') includeMeals: boolean,
+  ) {
+        console.log('What is includeMeals type?', typeof includeMeals)
         return this.answersService.findAll(userId, includeMeals);
     }
 
